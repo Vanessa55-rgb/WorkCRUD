@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>WorkCRUD Jobs</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h1>WorkCRUD Jobs</h1>
+  <nav id="navbar"></nav>
+  <main>
+    <section id="section-welcome" class="active">
+      <p>Welcome! <a href="#" id="link-register">Register</a> or <a href="#" id="link-login">Login</a>.</p>
+    </section>
+
+    <!-- Register & Login -->
+    <section id="section-register">
+      <h2>Register</h2>
+      <label>Email:<input type="email" id="reg-email"/></label>
+      <label>Password:<input type="password" id="reg-pass"/></label>
+      <label>Role:
+        <select id="reg-role">
+          <option value="seeker">Job Seeker</option>
+          <option value="company">Company</option>
+        </select>
+      </label>
+      <button id="btn-register">Register</button>
+      <button id="btn-register-cancel">Cancel</button>
+    </section>
+
+    <section id="section-login">
+      <h2>Login</h2>
+      <label>Email:<input type="email" id="login-email"/></label>
+      <label>Password:<input type="password" id="login-pass"/></label>
+      <button id="btn-login">Login</button>
+      <button id="btn-login-cancel">Cancel</button>
+    </section>
+
+    <!-- Seeker Dashboard -->
+    <section id="section-seeker-dashboard">
+      <h2>Job Seeker Dashboard</h2>
+      <button id="btn-edit-seeker-profile">Edit Profile</button>
+      <button id="btn-view-jobs">Browse Jobs</button>
+      <button id="btn-view-applications">My Applications</button>
+      <div id="seeker-content"></div>
+    </section>
+
+    <section id="section-seeker-profile-form">
+      <h2>My Profile</h2>
+      <label>Full Name:<input id="seeker-name"/></label>
+      <label>CV URL:<input id="seeker-cv"/></label>
+      <label>Skills:<input id="seeker-skills" placeholder="comma-separated" /></label>
+      <label>Experience:<textarea id="seeker-exp"></textarea></label>
+      <button id="btn-save-seeker-profile">Save Profile</button>
+      <button id="btn-cancel-seeker-profile">Cancel</button>
+    </section>
+
+    <section id="section-job-list">
+      <h2>Available Jobs</h2>
+      <div id="job-list"></div>
+      <button id="btn-back-to-seeker">Back</button>
+    </section>
+
+    <section id="section-seeker-applications">
+      <h2>My Applications</h2>
+      <div id="application-list"></div>
+      <button id="btn-back-from-applications">Back</button>
+    </section>
+
+    <!-- Company Dashboard -->
+    <section id="section-company-dashboard">
+      <h2>Company Dashboard</h2>
+      <button id="btn-edit-company-profile">Edit Company Profile</button>
+      <button id="btn-post-job">Post New Job</button>
+      <div id="company-content"></div>
+    </section>
+
+    <section id="section-company-profile-form">
+      <h2>Company Profile</h2>
+      <label>Company Name:<input id="company-name"/></label>
+      <label>Logo URL:<input id="company-logo"/></label>
+      <label>Sector:<input id="company-sector"/></label>
+      <label>Description:<textarea id="company-desc"></textarea></label>
+      <button id="btn-save-company-profile">Save Company</button>
+      <button id="btn-cancel-company-profile">Cancel</button>
+    </section>
+
+    <section id="section-job-post-form">
+      <h2>New / Edit Job</h2>
+      <input type="hidden" id="job-id"/>
+      <label>Title:<input id="job-title"/></label>
+      <label>Description:<textarea id="job-desc"></textarea></label>
+      <label>Requirements:<textarea id="job-req"></textarea></label>
+      <label>Salary:<input id="job-salary"/></label>
+      <label>Modality:
+        <select id="job-modality">
+          <option value="On-site">On‑site</option>
+          <option value="Hybrid">Hybrid</option>
+          <option value="Remote">Remote</option>
+        </select>
+      </label>
+      <button id="btn-save-job">Save Job</button>
+      <button id="btn-cancel-job">Cancel</button>
+    </section>
+  </main>
+
+  <script src="./app.js"></script>
+</body>
+</html>

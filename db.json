@@ -1,0 +1,28 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "role": "seeker",
+      "email": "alice@example.com",
+      "password": "password",
+      "name": "Alice Smith",
+      "cvUrl": "",
+      "skills": [],
+      "experience": "",
+      "applications": []
+    },
+    {
+      "id": 2,
+      "role": "company",
+      "email": "hr@techcorp.com",
+      "password": "password",
+      "companyName": "TechCorp",
+      "logoUrl": "",
+      "sector": "Technology",
+      "description": "",
+      "jobPosts": []
+    }
+  ],
+  "jobPosts": [],
+  "applications": []
+}
