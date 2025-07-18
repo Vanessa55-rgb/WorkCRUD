@@ -1,4 +1,5 @@
 // Mock backend (datos en memoria)
+
 let db = {
   users: JSON.parse(`[
     {"id":1,"role":"seeker","email":"alice@example.com","password":"password","name":"Alice Smith","cvUrl":"","skills":[],"experience":"","applications":[]},
@@ -51,9 +52,21 @@ $("btn-register").onclick = () => {
   let e = $("reg-email").value;
   let p = $("reg-pass").value;
   let r = $("reg-role").value;
-
-  if (!e || !p) return alert("Email and password required");
-  if (db.users.some(u => u.email === e)) return alert("Email already exists");
+//code for sustitute alert
+  if (!e || !p) return Swal.fire({
+  icon: "error",
+  title: "Oops...",
+  text: "FILL IN ALL THE SPACES",
+  showConfirmButton:false
+});
+  
+  
+  if (db.users.some(u => u.email === e)) return Swal.fire({
+  icon: "error",
+  title: "Oops...",
+  text: "A USER WITH THAT DATA ALREADY EXISTS",
+  showConfirmButton:false
+});
 
   let u = { id: Date.now(), email: e, password: p, role: r };
 
@@ -64,7 +77,13 @@ $("btn-register").onclick = () => {
   }
 
   db.users.push(u);
-  alert("Registered — please log in.");
+  Swal.fire({
+  position: "top-end",
+  icon: "success",
+  title: "USER SUCCESSFULLY REGISTERED",
+  showConfirmButton: false,
+  timer: 1500
+});
   showSection("section-login");
 };
 
@@ -74,7 +93,12 @@ $("btn-login").onclick = () => {
   let p = $("login-pass").value;
   let u = db.users.find(x => x.email === e && x.password === p);
 
-  if (!u) return alert("Invalid email/password");
+  if (!u) return Swal.fire({
+  icon: "error",
+  title: "Oops...",
+  text: "INCORRECT PASSWORD OR EMAIL",
+  showConfirmButton:false
+});
 
   currentUser = u;
   buildDashboard();
@@ -120,8 +144,14 @@ $("btn-save-seeker-profile").onclick = () => {
   currentUser.cvUrl = $("seeker-cv").value;
   currentUser.skills = $("seeker-skills").value.split(",").map(s => s.trim()).filter(Boolean);
   currentUser.experience = $("seeker-exp").value;
-
-  alert("Profile updated");
+//alert sustitute
+  Swal.fire({
+  position: "top-end",
+  icon: "success",
+  title: "USER SUCCESSFULLY REGISTERED",
+  showConfirmButton: false,
+  timer: 1500
+});
   buildDashboard();
 };
 
@@ -151,7 +181,13 @@ function displayJobs() {
       currentUser.applications.push(job.id);
       db.applications.push({ id: Date.now(), seekerId: currentUser.id, jobId: job.id });
 
-      alert("Applied successfully!");
+      Swal.fire({
+  position: "top-end",
+  icon: "success",
+  title: "APPLIED SUCCESSFULLY",
+  showConfirmButton: false,
+  timer: 2000
+});
     };
 
     container.append(div);
@@ -210,7 +246,13 @@ $("btn-save-company-profile").onclick = () => {
   currentUser.sector = $("company-sector").value;
   currentUser.description = $("company-desc").value;
 
-  alert("Company profile saved");
+  Swal.fire({
+  position: "top-end",
+  icon: "success",
+  title: "COMPANY PROFILE SAVED",
+  showConfirmButton: false,
+  timer: 2000
+});
   buildDashboard();
 };
 
@@ -245,6 +287,12 @@ $("btn-save-job").onclick = () => {
     currentUser.jobPosts.push(job.id);
   }
 
-  alert("Job successfully posted");
+  Swal.fire({
+  position: "top-end",
+  icon: "success",
+  title: "JOB SUCCESSFULLY POSTED",
+  showConfirmButton: false,
+  timer: 1500
+});
   buildDashboard();
 };
